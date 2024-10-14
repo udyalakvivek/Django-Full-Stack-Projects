@@ -1,0 +1,110 @@
+{% extends "layout.html" %} 
+{% block title %} 
+ python aur tweet 
+{% endblock %} 
+{% block content %}
+
+<h4 class="text-center mt-3">Welcome to Tweetbar!</h4>
+
+<a class="btn btn-primary m-3" href="{% url 'tweet_create' %}">Create tweet</a>
+
+<div class="container  ">
+  <div class="row d-flex flex-wrap">
+    {% for tweet in tweets %}
+    <div class="col-lg-3 col-md-4 col-sm-6 my-3 d-flex align-items-stretch">
+      <div class="card border-info" style="width: 18rem ">
+        {% if tweet.photo %}
+        <img 
+            src="{{ tweet.photo.url }}" 
+            class="card-img-top img-fluid custom_style" 
+            style="max-width: 100%; max-height: 200px; object-fit: cover;"
+            alt="img by {{tweet.user.username|title}}"
+            >
+        {% endif %}
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold text-primary" style="cursor: pointer;">{{ tweet.user.username |title }}</h5>
+          <p class="card-text">{{ tweet.text }}</p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            
+              {% if tweet.user == user %}
+              <div>
+                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+              </div>
+              {% else %}
+              <div class="d-flex fs-6 gap-2 align-items-center">
+                <p>20</p>
+                 <a class="fs-5"><i class="fa-solid fa-heart" style="cursor: pointer;"></i></a>
+                 <p>20</p>
+                 <a  class="fs-5"><i class="fa-solid fa-share" style="cursor: pointer;"></i></i></a>
+             </div>
+          
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends "layout.html" %} {% block title %} python aur tweet {% endblock %} 
+{% block content %}
+
+
+<h4 class="text-center mt-3">Welcome to python Django projects !</h4>
+
+<a class="btn btn-primary m-3" href="{% url 'tweet_create' %}">Create tweet</a>
+
+<div class="container row gap-3">
+  <div class="col-9 offset-1">
+    {% for tweet in tweets %}
+    <div class="card" style="width: 18rem">
+      {% if tweet.photo %}
+      <img src="{{ tweet.photo.url }}" class="card-img-top" alt="..." />
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ tweet.user.username }}</h5>
+        <p class="card-text">{{ tweet.text }}</p>
+        {% if tweet.user == user %}
+        <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary"
+          >Edit</a
+        >
+        <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger"
+          >Delete</a
+        >
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} {% endcomment %}

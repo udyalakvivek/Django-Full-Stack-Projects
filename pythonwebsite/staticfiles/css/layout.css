@@ -1,0 +1,21 @@
+body {
+  padding-top: 15px;
+}
+.my-navbar {
+  margin-top: 10px;
+  background-color: #212529;
+}
+.fixed-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #2b3035;
+  /* background-color: #0c6dcf !important; */
+}
+.white-shadow {
+  box-shadow: 0 0 1px 0.5px #e5e5e5;
+}
+.nav-link.active {
+  color: blue !important;
+}

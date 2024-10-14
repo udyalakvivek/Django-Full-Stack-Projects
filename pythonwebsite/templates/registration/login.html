@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="container d-flex align-items-center justify-content-center min-vh-100 p-3" style="margin-top: -50px;">
+    <div class="row w-100">
+        <div class="col-lg-4 col-md-6 col-10 mx-auto border border-1 text-center white-shadow">
+            <h2 class="text-center my-3 text-info">Login Form</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary m-2">Login</button>
+            </form>
+            <p>If you don't have an account, <a href="{% url 'register' %}">Register here</a></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
